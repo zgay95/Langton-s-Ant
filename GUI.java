@@ -21,6 +21,9 @@ public class GUI extends JFrame {
 
 
     int spacing = 1;
+    boolean Running = false;
+    int numOfTurns = 0;
+    int [][] grid = new int [64][50];
 
     public GUI(){
 
@@ -28,7 +31,7 @@ public class GUI extends JFrame {
            @Override
            public void actionPerformed(ActionEvent e) {
                System.out.println("starts program");
-
+               Running = true;
            }
        });
 
@@ -36,7 +39,7 @@ public class GUI extends JFrame {
         @Override
         public void actionPerformed(ActionEvent e) {
             System.out.println("stops program");
-
+            Running = false;
         }
     });
 
@@ -51,25 +54,31 @@ public class GUI extends JFrame {
         frame.add(board, BorderLayout.CENTER);
         frame.setSize(1286, 829);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(600, 600);
+        frame.setSize(1286, 1286);
         frame.setVisible(true);
         frame.setTitle("Langton's Ant");
-
-
-        
-        
+        grid[31][24] = 2;
 
     }
 
     public class Board extends JPanel {
         public void paintComponent(Graphics g) {
             super.paintComponent(g);
-            g.setColor(Color.WHITE);
-            g.fillRect(0,0,1280,800);
             g.setColor(Color.gray);
-            for(int i = 0; i < 11; i++){
-                for(int j = 0; j<11; j++){
-                    g.fillRect(spacing+i*30, spacing+j*30+30, 30-2*spacing, 30-2*spacing);
+            g.fillRect(0,0,1286,1286);
+            g.setColor(Color.white);
+            for(int i = 0; i < 64; i++){
+                for(int j = 0; j < 50; j++){
+                    if(grid[i][j] == 0){
+                        g.setColor(Color.white);
+                    }
+                    if(grid[i][j] == 1){
+                        g.setColor(Color.black);
+                    }
+                    if(grid[i][j] == 2){
+                        g.setColor(Color.red);
+                    }
+                    g.fillRect(i*15, j*15, 13, 13);
                 }
             }
 

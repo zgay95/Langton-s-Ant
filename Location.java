@@ -1,6 +1,6 @@
-public class Locaiton{
+public class Location{
 	private int row;
-	private int column;
+	private int col;
 	public static final int LEFT = -90;
 	public static final int RIGHT = 90;
 	public Location(int r, int c){
@@ -11,12 +11,12 @@ public class Locaiton{
 		return row;
 	}
 	public int getColumn(){
-		return column;
+		return col;
 	}
-	public int setRow(int r){
+	public void setRow(int r) {
 		row = r;
 	}
-	public int setColumn(int c){
+	public void setColumn(int c){
 		col = c;
 	}
 	public Location getAdjacentLocation(int direction){
